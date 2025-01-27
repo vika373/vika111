@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Квадратное уравнение</title>
+    <title>Circle Area</title>
 </head>
 <body>
+    <h1>Рассчитать площадь круга</h1>
+    <p>Введите радиус: <input type="number" id="radius" value="5"></p>
+    <button onclick="calculateArea()">Рассчитать</button>
+    <p>Площадь: <span id="result"></span></p>
+
     <script>
-       // Изначальное количество белых и черных фасолин
-let whiteBeans = 75;
-let blackBeans = 150;
+        function circleArea(radius) {
+            const pi = Math.PI;
+            return pi * Math.pow(radius, 2);
+        }
 
-while (whiteBeans + blackBeans > 1) {
-    // Если обе фасолины белые
-    if (whiteBeans >= 2) {
-        whiteBeans -= 2;
-        blackBeans += 1; // Добавляем одну черную фасолину в горшок
-    } 
-    // Если хотя бы одна фасолина черная
-    else {
-        blackBeans -= 1; // Убираем одну черную фасолину
-    }
-}
-
-// После завершения цикла, проверяем цвет оставшейся фасоли
-if (whiteBeans === 1) {
-    alert("Белый горошек остался");
-} else {
-    alert("Черный горошек остался");
-}
-
+        function calculateArea() {
+            const radius = document.getElementById('radius').value;
+            const area = circleArea(radius);
+            document.getElementById('result').textContent = area.toFixed(2);
+        }
     </script>
 </body>
 </html>
